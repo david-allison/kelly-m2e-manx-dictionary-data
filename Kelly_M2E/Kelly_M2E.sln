@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kelly_M2E", "Kelly_M2E.csproj", "{BDA610FD-D6CA-4AB6-9CDF-905C58865EDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDA610FD-D6CA-4AB6-9CDF-905C58865EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA610FD-D6CA-4AB6-9CDF-905C58865EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA610FD-D6CA-4AB6-9CDF-905C58865EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA610FD-D6CA-4AB6-9CDF-905C58865EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
