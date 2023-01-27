@@ -9,12 +9,14 @@ public record Headword(string[] HeadWords, string Entry)
         var htmlString = html.InnerHtml.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
         var inner = html.InnerText.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
 
-        var split = inner.Split(",");
-        var headword = split[0];
-        var rest = string.Join(",", split.Skip(1));
+        var headwords = new List<string>();
+        var rest = inner;
+        while (rest.Contains(',') && rest.Split(",")[0].HasUpperCaseWordsGreaterThanLength1())
+        {
+            headwords.Add(rest.Split(",")[0]);
+            rest = string.Join(",", rest.Skip(1));
+        }
         
-        
-        var headwords = new[] { headword };
-        return new Headword(headwords, Entry: rest);
+        return new Headword(headwords.ToArray(), Entry: rest);
     }
 }
