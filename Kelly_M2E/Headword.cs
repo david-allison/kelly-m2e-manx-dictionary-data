@@ -11,7 +11,7 @@ public record Headword(string[] HeadWords, string Entry)
 
         bool IsValidEntry(string s, bool allowOne)
         {
-            if (s.Replace(", or ", "").Replace(" or ", "").HasUpperCaseWordsGreaterThanLength1(allowOne))
+            if (s.Replace(", or ", "").Replace(" or ", "").AreAllWordsUpperCase(allowOne))
             {
                 return true;
             }

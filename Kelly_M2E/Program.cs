@@ -9,7 +9,7 @@ void Print(IEnumerable<Headword> enumerable)
     foreach (var headword in enumerable)
     {
         var hw = headword.HeadWords.Length == 0 ? "[missing]" : String.Join(" | ", headword.HeadWords);
-        Console.WriteLine(hw + "\t" + headword.Entry);
+        Console.WriteLine(hw + "|\t" + headword.Entry);
     }
 }
 
@@ -56,8 +56,9 @@ if (!hasNoHeadWord.Any()) {
 }
 
 //Print(hasWordInDefinition);
-//Print(hasLowercaseInHeadword);
-Print(headwords);
+Print(hasLowercaseInHeadword);
+Print(hasNoHeadWord);
+//Print(headwords);
 
 var output = headwords.Select(x => new KellyManxToEnglishEntry
 {
