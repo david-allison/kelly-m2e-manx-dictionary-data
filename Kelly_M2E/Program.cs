@@ -2,6 +2,7 @@
 
 using HtmlAgilityPack;
 using Kelly_M2E;
+using Newtonsoft.Json;
 
 void Print(IEnumerable<Headword> enumerable)
 {
@@ -57,3 +58,11 @@ if (!hasNoHeadWord.Any()) {
 //Print(hasWordInDefinition);
 //Print(hasLowercaseInHeadword);
 Print(headwords);
+
+var output = headwords.Select(x => new Output
+{
+    Words = x.HeadWords.ToList(),
+    Definition = x.Entry
+});
+
+File.WriteAllText("kelly-v1.json", JsonConvert.SerializeObject(output, Formatting.Indented));
