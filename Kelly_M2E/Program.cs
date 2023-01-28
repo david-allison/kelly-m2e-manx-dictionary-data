@@ -16,7 +16,8 @@ PreprocessUpperCase(doc);
 
 void PreprocessUpperCase(HtmlDocument htmlDocument)
 {
-    var nodes = htmlDocument.DocumentNode.SelectNodes("//span[contains(@style, 'font-variant:small')]");
+    // all font variants involve small caps
+    var nodes = htmlDocument.DocumentNode.SelectNodes("//span[contains(@style, 'font-variant:')]");
     foreach (var node in nodes)
     {
         node.InnerHtml = node.InnerHtml.ToUpper();
