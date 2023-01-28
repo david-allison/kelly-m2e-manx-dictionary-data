@@ -59,7 +59,7 @@ if (!hasNoHeadWord.Any()) {
 //Print(hasLowercaseInHeadword);
 Print(headwords);
 
-var output = headwords.Select(x => new Output
+var output = headwords.Select(x => new KellyManxToEnglishEntry
 {
     Words = x.HeadWords.ToList(),
     Definition = x.Entry
