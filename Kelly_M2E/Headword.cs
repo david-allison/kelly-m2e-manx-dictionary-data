@@ -28,9 +28,10 @@ public record Headword(string[] HeadWords, string Entry)
         var rest = inner;
         while (rest.Contains(',') && IsValidEntry(rest.Split(",")[0], headwords.Count == 0))
         {
-            var toAdd = rest.Split(",")[0];
+            var rst = rest.Split(",");
+            var toAdd = rst[0];
             headwords.Add(Normalise(toAdd));
-            rest = string.Join(",", rest.Skip(1));
+            rest = string.Join(",", rst.Skip(1));
         }
         
         return new Headword(headwords.ToArray(), Entry: rest);

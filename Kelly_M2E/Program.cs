@@ -33,8 +33,8 @@ Console.WriteLine(hasWordInDefinition.Count() + " problems");
 
 var hasNoHeadWord = headwords.Where(x => x.HeadWords.Length == 0);
 Console.WriteLine(hasNoHeadWord.Count() + " problems");
-
-foreach (var varr in hasNoHeadWord)
-{
-    Console.WriteLine(varr.Entry);
-}
+//
+// foreach (var word in headwords)
+// {
+//     Console.WriteLine(word.HeadWords[0] + "\t" + word.Entry);
+// }
