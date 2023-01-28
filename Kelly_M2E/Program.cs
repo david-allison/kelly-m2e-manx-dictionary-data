@@ -55,9 +55,9 @@ if (!hasNoHeadWord.Any()) {
     }
 }
 
-//Print(hasWordInDefinition);
+Print(hasWordInDefinition);
 //Print(hasLowercaseInHeadword);
-Print(hasNoHeadWord);
+//Print(hasNoHeadWord);
 //Print(headwords);
 
 var output = headwords.Select(x => new KellyManxToEnglishEntry
