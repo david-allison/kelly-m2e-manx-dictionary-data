@@ -12,6 +12,17 @@ var docText = MSWord.LoadEncodedFile(resourceName);
 var doc = new HtmlDocument();
 doc.LoadHtml(docText);
 
+PreprocessUpperCase(doc);
+
+void PreprocessUpperCase(HtmlDocument htmlDocument)
+{
+    var nodes = htmlDocument.DocumentNode.SelectNodes("//span[contains(@style, 'font-variant:small')]");
+    foreach (var node in nodes)
+    {
+        node.InnerHtml = node.InnerHtml.ToUpper();
+    }
+}
+
 var headwords = doc.DocumentNode.Descendants("p")
     .Select(Headword.FromHtml)
     .Where(x => x != null)
