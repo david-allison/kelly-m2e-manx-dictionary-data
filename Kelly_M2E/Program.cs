@@ -18,12 +18,13 @@ var headwords = doc.DocumentNode.Descendants("p")
     .Select(x => x!)
     .ToList();
     
-var invalid = headwords.Where(x => x.Entry.HasUpperCaseWordsGreaterThanLength1());
+var hasWordInDefinition = headwords.Where(x => x.Entry.HasUpperCaseWordsGreaterThanLength1());
+Console.WriteLine(hasWordInDefinition.Count() + " problems");
 
-foreach (var headword in invalid)
+var hasNoHeadWord = headwords.Where(x => x.HeadWords.Length == 0);
+Console.WriteLine(hasNoHeadWord.Count() + " problems");
+
+foreach (var varr in hasNoHeadWord)
 {
-    //Console.WriteLine(headword.HeadWords[0]);
-    Console.WriteLine(headword.Entry);
+    Console.WriteLine(varr.Entry);
 }
-
-Console.WriteLine(invalid.Count() + " problems");
