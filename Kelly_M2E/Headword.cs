@@ -23,15 +23,33 @@ public record Headword(string[] HeadWords, string Entry)
         {
             return s.Replace(", or ", "").Replace(" or ", "");
         }
+
+        var splitters = new[] { ", ", ", or ", " or " };
+        bool ContainsSplitter(string s) => splitters.Any(s.Contains);
         
         var headwords = new List<string>();
         var rest = inner;
-        while (rest.Contains(',') && IsValidEntry(rest.Split(",")[0], headwords.Count == 0))
+        while (ContainsSplitter(rest) && IsValidEntry(rest.Split(splitters, StringSplitOptions.RemoveEmptyEntries)[0], headwords.Count == 0))
         {
-            var rst = rest.Split(",");
+            var rst = rest.Split(splitters, StringSplitOptions.RemoveEmptyEntries);
             var toAdd = rst[0];
             headwords.Add(Normalise(toAdd));
-            rest = string.Join(",", rst.Skip(1));
+            
+            
+            // find the splitter we used
+            bool found = false;
+            foreach (var splitter in splitters.Reverse()) // longest first. Avoids
+            {
+                if (!rest.StartsWith(toAdd + splitter)) continue;
+                rest = rest.Substring(toAdd.Length + splitter.Length);
+                found = true;
+                break;
+            }
+
+            if (!found)
+            {
+                throw new InvalidOperationException("no substring");
+            }
         }
         
         return new Headword(headwords.ToArray(), Entry: rest);

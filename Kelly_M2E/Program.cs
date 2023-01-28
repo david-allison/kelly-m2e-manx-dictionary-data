@@ -7,7 +7,8 @@ void Print(IEnumerable<Headword> enumerable)
 {
     foreach (var headword in enumerable)
     {
-        Console.WriteLine(headword.HeadWords[0] + "\t" + headword.Entry);
+        var hw = headword.HeadWords.Length == 0 ? "[missing]" : headword.HeadWords[0];
+        Console.WriteLine(hw + "\t" + headword.Entry);
     }
 }
 
@@ -41,10 +42,18 @@ Console.WriteLine(hasWordInDefinition.Count() + " problems");
 
 var hasNoHeadWord = headwords.Where(x => x.HeadWords.Length == 0).ToList();
 Console.WriteLine(hasNoHeadWord.Count() + " problems");
+
+if (!hasNoHeadWord.Any()) {
+    var isInvalid = headwords.Where(x => x.HeadWords[0] == "AAA").ToList();
+    if (isInvalid.Any() )
+    {
+        Print(isInvalid);
+    }
+}
 //
 // foreach (var word in headwords)
 // {
 //     Console.WriteLine(word.HeadWords[0] + "\t" + word.Entry);
 // }
-
-Print(headwords);
+Print(hasNoHeadWord);
+//Print(headwords.Take(100));
