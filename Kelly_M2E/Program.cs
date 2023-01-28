@@ -3,8 +3,6 @@
 using HtmlAgilityPack;
 using Kelly_M2E;
 
-Console.WriteLine("Hello, World!");
-
 string resourceName = "Fockleyr J Kelly m2e_CORR_clean.html";
 
 var docText = MSWord.LoadEncodedFile(resourceName);
