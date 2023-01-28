@@ -30,6 +30,6 @@ public static class StringUtils
     {
         s = s.Trim();
         // TODO:  || x == ','
-        return (allowOne || s.Length > 1) && s.Where(char.IsAscii).All(x => char.IsUpper(x) || x == '-' || x == '!');
+        return (allowOne || s.Length > 1) && s.Where(char.IsAscii).All(x => char.IsUpper(x) || x == '-' || x == '!' || x == '’');
     }
 }

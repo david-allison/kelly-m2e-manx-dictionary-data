@@ -24,7 +24,8 @@ public record Headword(string[] HeadWords, string Entry)
             return s.Replace(", or ", "").Replace(" or ", "");
         }
 
-        var splitters = new[] { ", ", ", or ", " or " };
+        // TODO: handle ', " for "'
+        var splitters = new[] { ", ", ", or ", " as ", " and ", " or " };
         bool ContainsSplitter(string s) => splitters.Any(s.Contains);
         
         var headwords = new List<string>();

@@ -56,7 +56,7 @@ if (!hasNoHeadWord.Any()) {
 }
 
 //Print(hasWordInDefinition);
-Print(hasLowercaseInHeadword);
+//Print(hasLowercaseInHeadword);
 Print(hasNoHeadWord);
 //Print(headwords);
 
