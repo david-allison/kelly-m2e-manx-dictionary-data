@@ -9,11 +9,27 @@ public record Headword(string[] HeadWords, string Entry)
         var htmlString = html.InnerHtml.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
         var inner = html.InnerText.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
 
+        bool IsValidEntry(string s)
+        {
+            if (s.Replace(", or ", "").Replace(" or ", "").HasUpperCaseWordsGreaterThanLength1())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        string Normalise(string s)
+        {
+            return s.Replace(", or ", "").Replace(" or ", "");
+        }
+        
         var headwords = new List<string>();
         var rest = inner;
-        while (rest.Contains(',') && rest.Split(",")[0].HasUpperCaseWordsGreaterThanLength1())
+        while (rest.Contains(',') && IsValidEntry(rest.Split(",")[0]))
         {
-            headwords.Add(rest.Split(",")[0]);
+            var toAdd = rest.Split(",")[0];
+            headwords.Add(Normalise(toAdd));
             rest = string.Join(",", rest.Skip(1));
         }
         
