@@ -43,6 +43,9 @@ Console.WriteLine(hasWordInDefinition.Count() + " problems");
 var hasNoHeadWord = headwords.Where(x => x.HeadWords.Length == 0).ToList();
 Console.WriteLine(hasNoHeadWord.Count() + " problems");
 
+var hasLowercaseInHeadword = headwords.Where(x => x.HeadWords.Any(x => x.Any(char.IsLower))).ToList();
+Console.WriteLine(hasLowercaseInHeadword.Count() + " problems");
+
 if (!hasNoHeadWord.Any()) {
     var isInvalid = headwords.Where(x => x.HeadWords[0] == "AAA").ToList();
     if (isInvalid.Any() )
@@ -52,4 +55,5 @@ if (!hasNoHeadWord.Any()) {
 }
 
 //Print(hasWordInDefinition);
+//Print(hasLowercaseInHeadword);
 Print(headwords);
