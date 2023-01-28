@@ -9,9 +9,9 @@ public record Headword(string[] HeadWords, string Entry)
         var htmlString = html.InnerHtml.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
         var inner = html.InnerText.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
 
-        bool IsValidEntry(string s)
+        bool IsValidEntry(string s, bool allowOne)
         {
-            if (s.Replace(", or ", "").Replace(" or ", "").HasUpperCaseWordsGreaterThanLength1())
+            if (s.Replace(", or ", "").Replace(" or ", "").HasUpperCaseWordsGreaterThanLength1(allowOne))
             {
                 return true;
             }
@@ -26,7 +26,7 @@ public record Headword(string[] HeadWords, string Entry)
         
         var headwords = new List<string>();
         var rest = inner;
-        while (rest.Contains(',') && IsValidEntry(rest.Split(",")[0]))
+        while (rest.Contains(',') && IsValidEntry(rest.Split(",")[0], headwords.Count == 0))
         {
             var toAdd = rest.Split(",")[0];
             headwords.Add(Normalise(toAdd));
