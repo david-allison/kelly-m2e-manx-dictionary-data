@@ -28,8 +28,7 @@ public static class StringUtils
     
     public static bool IsUpperCase(this string s, bool allowOne = false)
     {
-        s = s.Trim();
-        // TODO:  || x == ','
-        return (allowOne || s.Length > 1) && s.Where(char.IsAscii).All(x => char.IsUpper(x) || x == '-' || x == '!' || x == '’');
+        s = s.Trim().Trim(';').Trim('.').Trim(',');
+        return (allowOne || s.Length > 1) && s.Where(char.IsAscii).All(x => !char.IsLower(x) && !char.IsNumber(x));
     }
 }
