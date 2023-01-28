@@ -50,10 +50,6 @@ if (!hasNoHeadWord.Any()) {
         Print(isInvalid);
     }
 }
-//
-// foreach (var word in headwords)
-// {
-//     Console.WriteLine(word.HeadWords[0] + "\t" + word.Entry);
-// }
-Print(hasNoHeadWord);
-//Print(headwords.Take(100));
+
+//Print(hasWordInDefinition);
+Print(headwords);
